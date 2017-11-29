@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Doge } from '../doge';
+import {Component, OnInit} from '@angular/core';
+import {DOGES} from '../mock-doges';
+import {Doge} from '../doge';
 
 @Component({
   selector: 'app-doges',
@@ -9,10 +10,8 @@ import { Doge } from '../doge';
 
 export class DogesComponent implements OnInit {
 
-   doge: Doge = {
-    id: 1,
-    name: 'NormalDoge'
-  };
+   doges = DOGES;
+   selectedDoge: Doge;
 
 
   constructor() { }
@@ -21,4 +20,7 @@ export class DogesComponent implements OnInit {
   }
 
 
+  onSelect(doge: Doge): void {
+    this.selectedDoge = doge;
+  }
 }

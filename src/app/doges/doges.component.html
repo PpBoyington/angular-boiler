@@ -1,7 +1,18 @@
-<p>
-  But my preferred one is {{doge.name }}
-</p>
-<div><span>Id: {{doge.id}}</span></div>
-<div><span>Name: {{doge.name | uppercase}}</span></div>
+<h2>My preferred Doges:</h2>
+<ul class="doges">
+  <li *ngFor="let doge of doges"
+      (click)="onSelect(doge)"
+      [class.selected]="doge === selectedDoge">
+    <span class="badge">Id: {{doge.id}}</span> {{doge.name}} <input type="text" [(ngModel)]="doge.name" placeholder="name">
+  </li>
+</ul>
 
-<input type="text" [(ngModel)]="doge.name" placeholder="name">
+<div *ngIf="selectedDoge">
+<h2>{{ selectedDoge.name | uppercase }} Details</h2>
+<div><span>id: </span>{{selectedDoge.id}}</div>
+<div>
+  <label>name:
+    <input [(ngModel)]="selectedDoge.name" placeholder="name">
+  </label>
+</div>
+</div>
