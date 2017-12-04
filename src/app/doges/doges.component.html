@@ -3,16 +3,9 @@
   <li *ngFor="let doge of doges"
       (click)="onSelect(doge)"
       [class.selected]="doge === selectedDoge">
-    <span class="badge">Id: {{doge.id}}</span> {{doge.name}} <input type="text" [(ngModel)]="doge.name" placeholder="name">
+    <span class="badge">Id: {{doge.id}}</span> {{doge.name}}
   </li>
 </ul>
 
-<div *ngIf="selectedDoge">
-<h2>{{ selectedDoge.name | uppercase }} Details</h2>
-<div><span>id: </span>{{selectedDoge.id}}</div>
-<div>
-  <label>name:
-    <input [(ngModel)]="selectedDoge.name" placeholder="name">
-  </label>
-</div>
-</div>
+<app-doge-detail [doge]="selectedDoge"></app-doge-detail>
+

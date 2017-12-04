@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {DOGES} from '../mock-doges';
 import {Doge} from '../doge';
+import {DogeService} from '../doge.service';
 
 @Component({
   selector: 'app-doges',
@@ -10,17 +10,23 @@ import {Doge} from '../doge';
 
 export class DogesComponent implements OnInit {
 
-   doges = DOGES;
+   doges: Doge[];
    selectedDoge: Doge;
 
 
-  constructor() { }
+  constructor(private dogeService: DogeService) { }
 
   ngOnInit() {
+    this.getDoges();
   }
 
 
   onSelect(doge: Doge): void {
     this.selectedDoge = doge;
+  }
+
+  getDoges(): void {
+    this.dogeService.getDoges()
+      .subscribe(doges => this.doges = doges);
   }
 }
