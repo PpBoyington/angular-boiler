@@ -10,19 +10,12 @@ import {DogeService} from '../doge.service';
 
 export class DogesComponent implements OnInit {
 
-   doges: Doge[];
-   selectedDoge: Doge;
-
+  doges: Doge[];
 
   constructor(private dogeService: DogeService) { }
 
   ngOnInit() {
     this.getDoges();
-  }
-
-
-  onSelect(doge: Doge): void {
-    this.selectedDoge = doge;
   }
 
   getDoges(): void {

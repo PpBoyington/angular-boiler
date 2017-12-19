@@ -1,11 +1,9 @@
 <h2>My preferred Doges:</h2>
 <ul class="doges">
-  <li *ngFor="let doge of doges"
-      (click)="onSelect(doge)"
-      [class.selected]="doge === selectedDoge">
+  <li *ngFor="let doge of doges">
+      <a routerLink="/detail/{{doge.id}}">
     <span class="badge">Id: {{doge.id}}</span> {{doge.name}}
+        </a>
   </li>
 </ul>
-
-<app-doge-detail [doge]="selectedDoge"></app-doge-detail>
 

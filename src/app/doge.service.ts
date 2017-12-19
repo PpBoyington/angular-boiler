@@ -10,9 +10,14 @@ export class DogeService {
 
   constructor(private messageService: MessageService) {}
 
+  getDoge(id: number): Observable<Doge> {
+    this.messageService.add(`DogeService: fetched doge id=${id}`);
+    return of(DOGES.find(doge => doge.id === id));
+  }
+
   getDoges(): Observable<Doge[]> {
-    this.messageService.add('Doges were fetched');
+    this.messageService.add('DogeService: all doges were fetched');
     return of(DOGES);
-}
+  }
 
 }
