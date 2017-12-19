@@ -1,0 +1,9 @@
+<h3>Top Doges</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let doge of doges" class="col-1-4"
+  routerLink="/detail/{{doge.id}}">
+    <div class="module doge">
+      <h4>{{doge.name}}</h4>
+    </div>
+  </a>
+</div>
