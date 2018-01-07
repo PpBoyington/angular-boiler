@@ -32,4 +32,9 @@ export class DogeDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  save(): void {
+    this.dogeService.updateDoge(this.doge)
+      .subscribe(() => this.goBack());
+  }
 }

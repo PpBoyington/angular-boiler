@@ -22,4 +22,16 @@ export class DogesComponent implements OnInit {
     this.dogeService.getDoges()
       .subscribe(doges => this.doges = doges);
   }
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.dogeService.addDoge({ name } as Doge)
+      .subscribe(doge => {
+        this.doges.push(doge);
+      });
+  }
+  delete(doge: Doge): void {
+    this.doges = this.doges.filter(d => d !== doge);
+    this.dogeService.deleteDoge(doge).subscribe();
+  }
 }

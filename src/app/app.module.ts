@@ -8,8 +8,12 @@ import { DogeDetailComponent } from './doge-detail/doge-detail.component';
 import {DogeService} from './doge.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {HttpClientModule} from '@angular/common/http';
+import {InMemoryWebApiModule} from 'angular-in-memory-web-api';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 @NgModule({
   declarations: [
@@ -22,9 +26,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    InMemoryWebApiModule
   ],
-  providers: [DogeService, MessageService],
+  providers: [DogeService, MessageService, InMemoryDataService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
+HttpClientInMemoryWebApiModule.forRoot(
+  InMemoryDataService, { dataEncapsulation: false }
+)
